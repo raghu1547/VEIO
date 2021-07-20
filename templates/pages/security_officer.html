@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="veio py-5">
+      <div class="container text-center pt-5">
+        <h1>
+          <i class="fas fa-car-side"></i>
+          Vehicle Record Management System
+        </h1>
+      </div>
+    </section>
+    {% include 'messages.html' %}
+    <!-- Table -->
+  <div class="container table-responsive mt-5 pt-5">
+  <h2>List of all vehicles with elapsed permit inside campus</h2>
+  <table class="table table-hover text-center mt-5">
+    <thead class="thead bg-info">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Vehicle No.</th>
+        <th scope="col">Entrant Name</th>
+        <th scope="col">No of days permitted</th>
+        <th scope="col">First Entry</th>
+        <th scope="col">Last Entry</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody id="tablebody">
+      {% for value in expiredata %}
+      <tr>
+        <th scope="row">{{forloop.revcounter}}</th>
+        <td>{{value.vn}}</td>
+        <td>{{value.name}}</td>
+        <td>{{value.nod}}</td>
+        <td>{{value.firstentry | date:'Y-m-d H:i'}}</td>
+        <td>{{value.timein}}</td>
+        <td>{{value.contact}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+{% endblock content %} {% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+{%load static%}
+<script src="{%static 'js/webs.js' %}"></script>
+{% endblock script %}

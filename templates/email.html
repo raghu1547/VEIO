@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body,
+      table {
+        background-color: aqua;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>List of vehicles with expired permission present inside campus</h1>
+    <hr />
+    <table>
+      <thead>
+        <th>#</th>
+        <th>Vehicle No.</th>
+        <th>Entrant Name</th>
+        <th>No of days permitted</th>
+        <th>First Entry</th>
+        <th>Last Entry</th>
+        <th>Contact No.</th>
+        {% for item in emails %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{item.vn}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.nod}}</td>
+          <td>{{item.firstentry | date:'d/m/y , H:i'}}</td>
+          <td>{{item.timein| date:'d/m/y , H:i'}}</td>
+          <td>{{item.contact}}</td>
+        </tr>
+        {% endfor %}
+      </thead>
+    </table>
+  </body>
+</html>

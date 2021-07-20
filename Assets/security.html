@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/4d7955fe75.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Vehicle Entry In and Out</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><i class="fa fa-car fa-2x text-primary"></i>
+          <h1 class="d-inline">VEIO</h1></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="login.html" class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="veio py-5">
+      <div class="container text-center pt-5">
+        <h1>
+          <i class="fas fa-car-side"></i>
+          Vehicle Record Management System
+        </h1>
+      </div>
+    </section>
+    <!-- Entry or exit -->
+    <form class="mt-5 pt-5 pb-3">
+      <div class="container pt-3" id="rl">
+        <h4 class="border-bottom border-dark pb-2 font-weight-bold">
+          Enter Vehicle Details
+        </h4>
+        <div class="row mt-4">
+          <div class="col-sm-6 offset-md-1 col-md-5 form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Vehicle Number here ....."
+            />
+          </div>
+          <div class="form-group col-sm-6 offset-md-1 col-md-3">
+            <select class="custom-select">
+              <option selected>Select</option>
+              <option value="entry">Entry</option>
+              <option value="exit">Exit</option>
+            </select>
+          </div>
+        </div>
+        <section id="entry-info">
+          <div class="row">
+            <h4 class="pl-4 text-monospace">
+              <span class="border-bottom border-dark"
+                >Details of the Visitor/Entrant :
+              </span>
+            </h4>
+          </div>
+          <div class="row p-2">
+            <div class="form-group col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name of the Entrant"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Contact Number"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="No of days"
+              />
+            </div>
+          </div>
+        </section>
+        <div class="row pb-3">
+          <div class="form-group offset-sm-4 col-sm-4">
+            <button type="submit" class="btn btn-block btn-outline-light">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- Table -->
+    <div class="container mt-5 pt-5">
+      <h2>List of all vehicles with elapsed permit inside campus</h2>
+      <table class="table table-hover text-center mt-5">
+        <thead class="thead bg-info">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Vehicle No.</th>
+            <th scope="col">Entrant Name</th>
+            <th scope="col">No of days permitted</th>
+            <th scope="col">Entry Date</th>
+            <th scope="col">Contact No.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {%load static %} {% block bodyclass %} bodyrl
+{%endblock bodyclass %} {% block content %}
+<div
+  class="container text-white w-50 h-100 d-flex align-items-center justify-content-around"
+  id="form-container"
+>
+  <form id="rl" action="{% url 'register' %}" method="POST" class="w-100 border regcon p-5">
+  
+  {% include 'messages.html' %}
+    {% csrf_token %}
+    <h3 class="mb-3 border-bottom pb-3 font-weight-bolder">Register</h3>
+    <div class="container mb-3">
+      <div class="row">
+        <div class="col-md-6 p-0 px-md-1">
+          <div class="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              name="first_name"
+              class="form-control"
+              id="first-name"
+              required
+            /><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+        </div>
+        <div class="col-md-6 p-0 px-md-1">
+          <div class="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="last_name"
+              class="form-control"
+              id="last-name"
+              required
+            /><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        id="username"
+        required
+      />
+      <i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small style="font-size: 10px;">Error message</small>
+    </div>
+    <div class="container mb-3">
+      <div class="row">
+        <div class="col-md-6 p-0 px-md-1">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              required
+            />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+        </div>
+        <div class="col-md-6 p-0 px-md-1">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              name="phone_number"
+              class="form-control"
+              id="phoneno"
+              required
+            /><i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        name="password1"
+        class="form-control"
+        id="password1"
+        required
+      /><i class="fas fa-check-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small style="font-size: 10px;">Error message</small>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control" id="password2" name="password2" required /><i
+        class="fas fa-check-circle"
+      ></i>
+      <i class="fas fa-exclamation-circle"></i>
+      <small>Error message</small>
+    </div>
+    <button type="submit" class="btn btn-outline-light">Submit</button>
+    <div class="form-group pt-3">
+      <p class="font-weight-lighter">
+        Already have an account?
+        <a href="{%url 'login' %}" class="text-dark font-weight-bold">Login</a>
+        here
+      </p>
+    </div>
+  </form>
+</div>
+{% endblock content %} {%block script %}
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock script%}

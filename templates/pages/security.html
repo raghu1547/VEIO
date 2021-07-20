@@ -1,0 +1,127 @@
+{% extends 'base.html' %} {% block content %}
+<section class="veio py-5 mb-3">
+  <div class="container text-center pt-5">
+    <h1>
+      <i class="fas fa-car-side"></i>
+      Vehicle Record Management System
+    </h1>
+  </div>
+</section>
+
+{% include 'messages.html' %}
+<!-- Entry or exit -->
+<form
+  action="{% url 'security' %}"
+  method="post"
+  id="valet"
+  class="mt-5 pt-5 pb-3"
+>
+  {% csrf_token %}
+  <div class="container pt-3" id="rl">
+    <h4 class="border-bottom border-dark pb-2 font-weight-bold">
+      Enter Vehicle Details
+    </h4>
+    <p
+      class="lead text-center bg-success rounded d-none p-1 mx-auto w-50"
+      id="checkvehinfo"
+    ></p>
+    <div class="row mt-4">
+      <div class="col-sm-6 offset-md-1 col-md-5 form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Vehicle Number here ....."
+          name="vehicle_no"
+          id="vehicle_no"
+          required
+        />
+      </div>
+      <div class="form-group col-sm-6 offset-md-1 col-md-3">
+        <select class="custom-select" name="transport" required>
+          <option value="">Select</option>
+          <option value="entry">Entry</option>
+          <option value="exit">Exit</option>
+        </select>
+      </div>
+    </div>
+    <section id="entry-info">
+      <div class="row">
+        <h4 class="pl-4 text-monospace">
+          <span class="border-bottom border-dark"
+            >Details of the Visitor/Entrant :
+          </span>
+        </h4>
+      </div>
+      <div class="row p-2">
+        <div class="form-group col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name of the Entrant"
+            name="Entrant"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contact Number"
+            name="phone_no"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="No of days"
+            name="nod"
+            min="1"
+          />
+        </div>
+      </div>
+    </section>
+    <div class="row pb-3">
+      <div class="form-group offset-sm-4 col-sm-4">
+        <button type="submit" class="btn btn-block btn-outline-light">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Table -->
+<div class="container table-responsive mt-5 pt-5">
+  <h2>List of all vehicles with elapsed permit inside campus</h2>
+  <table class="table table-hover text-center mt-5">
+    <thead class="thead bg-info">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Vehicle No.</th>
+        <th scope="col">Entrant Name</th>
+        <th scope="col">No of days permitted</th>
+        <th scope="col">First Entry</th>
+        <th scope="col">Last Entry</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody id="tablebody">
+      {% for value in expiredata %}
+      <tr>
+        <th scope="row">{{forloop.revcounter}}</th>
+        <td>{{value.vn}}</td>
+        <td>{{value.name}}</td>
+        <td>{{value.nod}}</td>
+        <td>{{value.firstentry | date:'d/m/y , H:i'}}</td>
+        <td>{{value.timein| date:'d/m/y , H:i'}}</td>
+        <td>{{value.contact}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %} {% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+{%load static%}
+<script src="{%static 'js/webs.js' %}"></script>
+{% endblock script %}
